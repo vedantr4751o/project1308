@@ -8,8 +8,31 @@
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
   }
   
+  /* Disable heavy mobile GPU backdrop-blur repaints -> use sleek fast dark glass background */
+  .backdrop-blur,
+  .backdrop-blur-\[12px\],
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(14, 14, 14, 0.94) !important;
+  }
+
+  /* Disable heavy box shadows on mobile for 60fps scrolling */
+  .shadow-\[0_8px_24px_rgba\(0\2c 0\2c 0\2c 0\.5\)\] {
+    box-shadow: none !important;
+  }
+
+  /* Instant reveal on mobile to remove scroll stutter */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   .h-\[100vh\] {
     height: auto !important;
     min-height: 100vh !important;
@@ -49,10 +72,7 @@
     left: 16px !important;
   }
 
-  .grid-cols-3 {
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-  }
+  .grid-cols-3,
   .grid-cols-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
     gap: 10px !important;
