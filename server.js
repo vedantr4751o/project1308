@@ -15,6 +15,9 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Admin-Password');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', '0');
     if (req.method === 'OPTIONS') {
         return res.sendStatus(200);
     }
